@@ -14,7 +14,20 @@ public class DatabaseScriptSource implements ScriptSource {
 
     @Override
     public String getScriptAsString() throws IOException {
-        return null;
+        // 就是获取脚本的文本内容
+        return "package groovy\n" +
+                "\n" +
+                "import com.remcarpediem.groovyengine.HelloService\n" +
+                "import org.springframework.stereotype.Component\n" +
+                "\n" +
+                "@Component\n" +
+                "class HelloServiceImpl implements HelloService {\n" +
+                "    String name\n" +
+                "\n" +
+                "    String hello() {\n" +
+                "        return \"Hello $name. Welcome to Groovy in Spring\"\n" +
+                "    }\n" +
+                "}";
     }
 
     @Override
@@ -24,6 +37,7 @@ public class DatabaseScriptSource implements ScriptSource {
 
     @Override
     public String suggestedClassName() {
-        return null;
+        // 获取脚本的类名
+        return "HelloServiceImpl";
     }
 }
